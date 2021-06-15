@@ -6,9 +6,19 @@ jobs:
 
    steps:
       - run:
+          name: Installing sudo...
           command: |
            apt-get update && apt-get upgrade -y
            apt-get install sudo -y
+
+      - run:
+          name: Installing timezone data...
+          command: |
+           export DEBIAN_FRONTEND=noninteractive
+           ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime
+           apt-get install tzdata -y
+           dpkg-reconfigure --frontend noninteractive tzdata
+
 workflows:
   version: 2.1
   cooking:
