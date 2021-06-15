@@ -1,0 +1,16 @@
+version: 2.1
+jobs:
+  run:
+   docker:
+      - image: ubuntu:latest
+
+   steps:
+      - run:
+          command: |
+           apt-get update && apt-get upgrade -y
+           apt-get install sudo -y
+workflows:
+  version: 2.1
+  cooking:
+    jobs:
+      - run
