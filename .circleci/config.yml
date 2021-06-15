@@ -19,6 +19,15 @@ jobs:
            apt-get install tzdata -y
            dpkg-reconfigure --frontend noninteractive tzdata
 
+
+      - run:
+          name: Installing some required packages...
+          command: |
+           apt-get install bc bash git-core gnupg gnupg2 build-essential \
+           zip curl make automake autogen autoconf autotools-dev libtool shtool python \
+           m4 gcc libtool zlib1g-dev flex bison libssl-dev nano unzip tar xz-utils \
+           software-properties-common gcc-aarch64-linux-gnu -q -y
+
 workflows:
   version: 2.1
   cooking:
